@@ -8,14 +8,14 @@
 import Foundation
 import AppAuth
 
-class DefaultAuthStateRepository: AuthStateRepository {
+public class DefaultAuthStateRepository: AuthStateRepository {
     
     private var authstate: OIDAuthState?
     private let authstatePreferenceKey = "AuthState"
     
     init() {}
     
-    func get() -> OIDAuthState? {
+    public func get() -> OIDAuthState? {
         if let validAuthstate = authstate {
             return validAuthstate
         }
@@ -29,7 +29,7 @@ class DefaultAuthStateRepository: AuthStateRepository {
         }
     }
     
-    func set(state: OIDAuthState) {
+    public func set(state: OIDAuthState) {
         self.authstate = state
         if #available(iOS 11.0, *) {
             if let encodedData = try? NSKeyedArchiver.archivedData(withRootObject: state, requiringSecureCoding: false) {
@@ -43,7 +43,7 @@ class DefaultAuthStateRepository: AuthStateRepository {
         }
     }
     
-    func clear() {
+    public func clear() {
         self.authstate = nil
         UserDefaults.standard.set(nil, forKey: authstatePreferenceKey)
     }

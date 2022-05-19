@@ -10,7 +10,7 @@ import Foundation
 /**
  * A profile for an authenticated user.
  */
-struct UserProfile {
+public struct UserProfile {
     /**
     * Unique identifier for the user. Sourced from the subject claim.
     */

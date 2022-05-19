@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AuthConfig {
+public struct AuthConfig {
     private let authorizeUri: String
     private let tokenUri: String
     private let endSessionUri: String

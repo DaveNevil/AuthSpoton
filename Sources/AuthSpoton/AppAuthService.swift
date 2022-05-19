@@ -22,9 +22,9 @@ enum AuthServiceError: Error {
     case unableToUpdateState
 }
 
-typealias AuthCompletionHandler = (_ error: Error?) -> Void
+public typealias AuthCompletionHandler = (_ error: Error?) -> Void
 
-class AppAuthService : AuthService {
+public class AppAuthService : AuthService {
     private var session: AnyObject?
     private let authConfig: AuthConfig
     private let authStateRepository: AuthStateRepository
@@ -32,7 +32,7 @@ class AppAuthService : AuthService {
     
     private var userProfile: UserProfile? = nil
     
-    init(authConfig: AuthConfig, authStateRepository: AuthStateRepository) {
+    public init(authConfig: AuthConfig, authStateRepository: AuthStateRepository) {
         self.serviceConfig = OIDServiceConfiguration(
             authorizationEndpoint: authConfig.getAuthorizeUri(),
             tokenEndpoint: authConfig.getTokenUri(),
@@ -45,7 +45,7 @@ class AppAuthService : AuthService {
         self.authConfig = authConfig
     }
     
-    func launchLogin(presentingViewController: UIViewController, completion: @escaping AuthCompletionHandler) {
+    public func launchLogin(presentingViewController: UIViewController, completion: @escaping AuthCompletionHandler) {
         DispatchQueue.main.startCoroutine {
             let authCodeRequest = OIDAuthorizationRequest(
                 configuration: self.serviceConfig,
@@ -107,7 +107,7 @@ class AppAuthService : AuthService {
         }
     }
     
-    func launchLogout(presentingViewController: UIViewController, completion: @escaping AuthCompletionHandler) {
+    public func launchLogout(presentingViewController: UIViewController, completion: @escaping AuthCompletionHandler) {
         DispatchQueue.main.startCoroutine {
             self.userProfile = nil
             
@@ -147,7 +147,7 @@ class AppAuthService : AuthService {
         }
     }
     
-    func getUserProfile() -> UserProfile? {
+    public func getUserProfile() -> UserProfile? {
         if userProfile != nil {
             return userProfile
         }
@@ -160,11 +160,11 @@ class AppAuthService : AuthService {
         return userProfile
     }
     
-    func isAuthenticated() -> Bool {
+    public func isAuthenticated() -> Bool {
         return getUserProfile() != nil
     }
     
-    func getAccessToken() -> String? {
+    public func getAccessToken() -> String? {
         let authState = self.authStateRepository.get()
         authState?.performAction(freshTokens: { (accessToken, idToken, error) in
             guard error == nil else {

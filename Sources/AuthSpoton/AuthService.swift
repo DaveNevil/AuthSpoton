@@ -11,7 +11,7 @@ import UIKit
 /**
  * The [AuthService] offers functionality related to authentication with a SSO provider.
  */
-protocol AuthService {
+public protocol AuthService {
     /**
      * Launches a login screen, which opens a custom tab to the SSO Provider, so the user can login.
      * Uses the authorization code flow.

@@ -11,7 +11,7 @@ import AppAuth
 /**
  * Persistent data store for [AuthState].
  */
-protocol AuthStateRepository {
+public protocol AuthStateRepository {
     func get() -> OIDAuthState?
     func set(state: OIDAuthState)
     func clear()

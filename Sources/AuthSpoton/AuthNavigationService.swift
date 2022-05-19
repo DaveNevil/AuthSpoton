@@ -8,7 +8,7 @@
 import Foundation
 import AppAuth
 
-protocol AuthNavigationService {
+public protocol AuthNavigationService {
     
     /**
      * Get the app link to redirect to after a successful authentication.
