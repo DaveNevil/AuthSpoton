@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol AuthConfigProvider {
+public protocol AuthConfigProvider {
     func getAuthConfig() -> AuthConfig
 }

@@ -13,7 +13,7 @@ public class DefaultAuthStateRepository: AuthStateRepository {
     private var authstate: OIDAuthState?
     private let authstatePreferenceKey = "AuthState"
     
-    init() {}
+    public init() {}
     
     public func get() -> OIDAuthState? {
         if let validAuthstate = authstate {
