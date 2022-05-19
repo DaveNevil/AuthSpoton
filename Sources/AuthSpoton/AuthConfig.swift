@@ -15,7 +15,7 @@ public struct AuthConfig {
     let clientId: String
     let scopes: String
     
-    init(
+    public init(
         authorizeUri: String,
         tokenUri: String,
         endSessionUri: String,
